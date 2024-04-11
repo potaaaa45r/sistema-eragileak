@@ -4,13 +4,20 @@
     - [baimen taldeak](#baimen-taldeak)
     - [Baimenak oktalea](#baimenak-oktalea)
   - [Stiky bit baimena](#stiky-bit-baimena)
+  - [SUID eta SUID baimenak](#suid-eta-suid-baimenak)
+    - [SUID](#suid)
+  - [Ezaugarri bereziak - lsattr](#ezaugarri-bereziak---lsattr)
+- [Ariketak](#ariketak)
+  - [Ariketa 1](#ariketa-1)
 
 ## Fitxategi eta direktorioren baimenak
 
 Fitxategi eta direktorioren baimenak hurrengo aginduarekin ikusi ditzakegu
 
+```bash
 ls -a
-asd
+```
+
 ![alt text](image.png)
 
 
@@ -20,8 +27,10 @@ asd
 sortzailea jabea izango da defektuz.
 - Talde (group): Fitxategi baten jabetza talde bati ere bai dagokio.
 - Besteak (other): Edo taldekideak ez direnal.
- ![](image-1.png)
- Linux sistemetan, "baimen mota" edo "modo deitzailea" eta `chmod` komandoaren erabilera oso garrantzitsua da. Hemen bi termino hauek azaltzen dizkizut:
+
+![](image-1.png)
+
+Linux sistemetan, "baimen mota" edo "modo deitzailea" eta `chmod` komandoaren erabilera oso garrantzitsua da. Hemen bi termino hauek azaltzen dizkizut:
 
 1. **Baimen motak (Permission Types)**:
    Linux sistemak fitxategi edo direktorio bakoitzeko hiru baimen mota desberdin ditu:
@@ -87,4 +96,123 @@ chmod +t froga.txt
 ```
 ![alt text](image-2.png)
 
+## SUID eta SUID baimenak
 
+### SUID
+SUID aktibatuta dagoenean fitxategi 
+hau exekutatzen da duen erabiltzaileak
+sortzailearen baimenak izango ditu.
+
+```bash
+chmod u+s froga.txt
+```
+
+Sortu exekutable root bezala 
+hurrengo edukiarekin eta izenarekin.
+
+
+suidfroga.sh
+```bash
+#/bin/bash
+wcho erabiltzailea
+id
+echo exekuzio baimen
+echo $euid
+```
+
+Baimenak esleituko dizkiogu
+fitxategiari
+```bash
+chmod 755 suidfroga.sh
+```
+
+Ezarri SUID suidfroga.sh
+fitxategiari
+
+```bash
+chmod u+s suidfroga.sh
+```
+
+
+```bash
+chmod 4755 suidfroga.sh
+```
+
+## Ezaugarri bereziak - lsattr
+eta chattr
+
+Ezaugarri bereziak ikusteko
+`lsattr agindua erabiliko ditugu
+
+Ezaugarri bereziak aldatzeko
+`chattr agindua erabiliko dugu.
+
+Adibidez i atributuarekin
+fitxategi bat inmutablea
+bilakatzen dugu, Hau esan nahi du
+inork ezin duela aldatu ez ezabatu,ezta root-ek, ezabatu
+nahi izakoetan, i atributoa
+kendu baharko genioke lehenago.
+
+```bash
+chattr +i froga.txt
+lsattr froga.txt
+```
+
+u ezaugarriarekin ezabatzen dugunean, 
+datuak gordeta gelditzen dira
+ eta bere berreskurapena ahalbidatzen du.
+
+```bash
+chattr +u froga.txt
+```
+
+
+-**e** ezaugarriarekin fitxategi bat
+ezabaten denean, okupatzen zuen memoria
+zeroekin berrizdatzen da.
+
+```bash
+chattr +e froga.txt
+```
+
+
+-**c** ezaugarriarekin fitxategi bat 
+komprimituta gordeko da.
+```bash
+chattr +c froga.txt
+```
+
+
+-**a** ezaugarriarekin fitxategi bati 
+bakarrik gelditu ahal zaizkio gauzak, hau da,
+ezin da aldatu aurretik zegoen ezer
+```bash
+chattr +a froga.txt
+```
+
+# Ariketak
+
+## Ariketa 1 
+
+lotu baimenarekin:
+
+- 462
+- 123
+- 711
+- 333
+- 161
+- 765
+- 567
+- 101
+- 102
+
+- rwx--x--x
+- --x-w--wx
+- --x-----x
+- -wx-wx-wx
+- r-xrw
+- rwxrw-r-x
+- --xrw-w-
+- r-rw-w-
+- -xrw-x
