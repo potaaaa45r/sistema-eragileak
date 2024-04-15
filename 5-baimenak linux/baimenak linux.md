@@ -207,12 +207,12 @@ lotu baimenarekin:
 - 101
 - 102
 
-- rwx--x--x
-- --x-w--wx
-- --x-----x
-- -wx-wx-wx
-- r-xrw
-- rwxrw-r-x
-- --xrw-w-
-- r-rw-w-
-- -xrw-x
+- rwx--x--x=711
+- --x-w--wx=123
+- --x-----x=101
+- -wx-wx-wx=333
+- r-xrw=567
+- rwxrw-r-x=765
+- --xrw-w-=102
+- r-rw-w-=462
+- -xrw-x=161
