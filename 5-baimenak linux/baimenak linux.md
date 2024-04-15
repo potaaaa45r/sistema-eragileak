@@ -9,6 +9,12 @@
   - [Ezaugarri bereziak - lsattr](#ezaugarri-bereziak---lsattr)
 - [Ariketak](#ariketak)
   - [Ariketa 1](#ariketa-1)
+  - [Ariketa 2](#ariketa-2)
+  - [Ariketa 3](#ariketa-3)
+  - [Ariketa 4](#ariketa-4)
+  - [Ariketa 5](#ariketa-5)
+  - [Ariketa 6](#ariketa-6)
+  - [Ariketa 7](#ariketa-7)
 
 ## Fitxategi eta direktorioren baimenak
 
@@ -205,7 +211,7 @@ lotu baimenarekin:
 - 765
 - 567
 - 101
-- 102
+- 162
 
 - rwx--x--x=711
 - --x-w--wx=123
@@ -213,6 +219,53 @@ lotu baimenarekin:
 - -wx-wx-wx=333
 - r-xrw=567
 - rwxrw-r-x=765
-- --xrw-w-=102
+- --xrw-w-=162
 - r-rw-w-=462
 - -xrw-x=161
+
+## Ariketa 2
+
+Zein da fitxategi honen baimenen baimena modu oktalean?
+![alt text](image-4.png)
+Modu oktalean horrela izango zen:464
+
+## Ariketa 3
+
+Jarri hurrengo baimenak modu oktalean:
+ 
+- r--r-xrw-=456
+- --xr-xr--=154
+- r--------=400
+- --------x=001
+- rwsr-xr-x=4755
+- rwxr-sr-x=2755
+- r--rw---t=460
+
+## Ariketa 4
+
+Zer gertatuko da hurrengo agindua exekutatzerakoan?
+![alt text](image-5.png)
+
+1-'Whoami' komandoaren output-a file fitxategian gordeko da, fitxategiaren jabea izateagatik baimenek ez baitidate eragiten(zuzena)
+
+2-'Whoami' komandoaren output-a ezin izango da file fitxategian gorde, jabea izan arren, fitxategian esleitutako baimena gailentzen delako
+
+## Ariketa 5
+
+Nola lortuko zenuke "file" artxiboaren baimenak ikusten den moduan aldatzeko?
+![alt text](image-6.png)
+Erantzuna:
+chmod g+x file
+
+## Ariketa 6
+
+Zortzitarrean zer baimen esleitu beharko dut artxiboak adierazitako baimenak izan ditzan lortzeko?
+![alt text](image-7.png)
+chmod 870 file
+
+## Ariketa 7
+
+Honako baimen hauek konfiguratuta dituen fitxategi hau ezabatu ahal izango dut?
+![alt text](image-8.png)
+- Bai
+-**Ez**
